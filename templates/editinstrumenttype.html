@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "flashmessage.html" %}
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-1"></div>
+			<div class="col-md-7">
+			<h1>Edit {{instruments.name_type}}</h1>
+
+			<div class="clearfix"></div>
+
+				<form action="{{url_for('editInstrumentType', instrument_type_id = instrument_type_id, instrument_type_name = instrument_type_name)}}" method="post">
+					<label for="name">Name:</label>
+					<input type ="text" class="form-control" name="name" value="{{instruments.name }}">
+					<br>
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+					<a href = '{{url_for('homepage')}}'>
+					<button class="btn btn-default delete" type="button">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+					</a>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

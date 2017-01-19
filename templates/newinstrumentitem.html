@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "flashmessage.html" %}
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-1"></div>
+			<div class="col-md-7">
+			<h1>New Instrument</h1>
+
+			<div class="clearfix"></div>
+
+				{% if error_message %}
+
+					<div class="alert alert-info" role="alert">{{error_message}}</div>
+
+				{% endif %}
+
+			<div class="clearfix"></div>
+
+			<form action="{{url_for('newInstrumentItem', instrument_type_id = instruments.id)}}" method="post">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="50" class="form-control" name="name" placeholder="Name of the instrument">
+					<br>
+					<label for="description">Description:</label>
+					<textarea class="form-control" maxlength="250" rows="3" name="description" placeholder="Description of the instrument"></textarea>
+					<br>
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Create</button>
+
+					<a href="{{url_for('instrumentList', instrument_type_id = instruments.id, instrument_type_name = instruments.name_type)}}">
+					<button class="btn btn-default delete" type="button">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Cancel</button>
+					</a>
+				</div>
+			</form>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+	</div>
+
+{% endblock %}

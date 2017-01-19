@@ -1,0 +1,57 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "flashmessage.html" %}
+
+<div class="row">
+
+		<div class="col-md-4 col-sep">
+
+			<h2>Instrument Types</h2>
+
+			{% for instrumenttypes in instrumenttype %}
+
+			<h3>{{instrumenttypes.name_type}}</h3>
+
+			<div class="clearfix"></div>
+
+			<div class="btn-group-vertical" role="group" aria-label="...">
+				<a class="btn btn-default" href='{{url_for('instrumentList', instrument_type_id = instrumenttypes.id, instrument_type_name = instrumenttypes.name_type) }}'>View All Instruments</a>
+			</div>
+
+			{% endfor %}
+
+		</div>
+
+
+	<div class="col-md-8">
+		<h2>{{instruments.name_type}} ({{itemCount}})</h2>
+			<a href="{{url_for('editInstrumentType', instrument_type_id = instruments.id, instrument_type_name = instruments.name_type )}}">
+				<button class="btn btn-default" id="new-menu-item">
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Instrument Type
+				</button>
+			</a>
+			<a href="{{url_for('deleteInstrumentType', instrument_type_id = instruments.id )}}">
+				<button class="btn btn-default delete" id="delete-restaurant">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Instrument Type
+				</button>
+			</a>
+			<a href="{{url_for('newInstrumentItem', instrument_type_id = instruments.id )}}">
+				<button class="btn btn-default" id="new-menu-item">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add New Instrument
+				</button>
+			</a>
+	
+			{% if items != [] %}
+			<div class="col-md-1"></div>
+					{% for i in items %}
+						<div class="menu-item">
+							<h3>{{i.name}}</h3>
+							<p>{{i.description[:100]}}... <a href='{{url_for('singleInstrument', instrument_type_id = i.instrumenttype.id, instrument_type_name = i.instrumenttype.name_type, instrument_id = i.id, instrument_name = i.name)}}'>See More</a></p>
+							<a href='{{url_for('editInstrumentItem', instrument_type_id = instruments.id, instrument_id=i.id ) }}'>Edit</a> | 
+							<a href='{{url_for('deleteInstrumentItem', instrument_type_id = instruments.id, instrument_id=i.id ) }}'>Delete</a>
+						</div>
+					{% endfor %}
+			{% endif %}
+	</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+	<div class="row top-row">
+		<div class="col-md-8 logo">
+			<a href="{{url_for('homepage')}}"><h1>Instrument Database</h1></a>
+		</div>
+		<div class="col-md-4 text-right">
+			{% if 'username' not in session %}
+			<div class="login">
+			<a class="btn btn-primary" href="{{url_for('showLogin')}}">Log In</a>
+			</div>
+			{% else %}
+			<div class="col-md-4 user-info">
+			<ul class="list-unstyled">
+				<li><div class="text-username">{{current_user.name}}</div></li>
+				<li>
+				<div class="profile-header-container">   
+	    		<div class="profile-header-img">
+	    			<div class="img img-circle" style="background-image:url('{{current_user.picture}}')"></div>
+				</div>
+				</div>
+				</li>
+			</ul>
+			</div>
+			<div class="logout">
+			<a class="btn btn-primary" href="{{url_for('disconnect')}}">Log Out</a>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<hr>
+		</div>
+	</div>

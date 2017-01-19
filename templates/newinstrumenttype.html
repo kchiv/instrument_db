@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "flashmessage.html" %}
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-1"></div>
+			<div class="col-md-7">
+			<h1>New Instrument Type</h1>
+
+			<div class="clearfix"></div>
+
+				{% if error_message %}
+
+					<div class="alert alert-info" role="alert">{{error_message}}</div>
+
+				{% endif %}
+
+			<div class="clearfix"></div>
+			<form action="{{url_for('newInstrumentType')}}" method="post">
+				<div class="form-group">
+				<label for="name">Name:</label>
+				<input type ="text" maxlength="50" class="form-control" name="name" placeholder="Name of the instrument type">
+				<br>
+				<button type="submit" class="btn btn-default" id="submit" type="submit">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Create</button>
+
+				<a href="{{url_for('homepage')}}">
+					<button class="btn btn-default delete" type="button">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Cancel</button>
+				</a>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

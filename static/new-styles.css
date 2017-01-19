@@ -1,0 +1,72 @@
+
+/** top section **/
+.top-row {
+	padding-top: 1%;
+}
+
+.login {
+	margin-top: 2%;
+}
+
+.logo a {
+	color: black;
+	text-decoration: none;
+}
+
+hr {
+	border: 1px solid #eee;
+}
+
+/** login logout section **/
+
+.user-info {
+	float: right;
+}
+
+.profile-header-container{
+    margin: 0 auto;
+    text-align: center;
+    float: right;
+}
+
+.text-username{
+	float: right;
+}
+
+.img{
+    width: 90px;
+    height: 90px;
+    background-size: cover;
+}
+
+.profile-header-img > div.img-circle {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #eee;
+}
+
+.profile-header {
+    margin-top: 43px;
+}
+
+.logout {
+	margin-top: 8%;
+}
+
+
+/** body content **/
+
+.col-md-4.col-sep {
+	border-right: 1px solid #eee;
+	padding-left: 3%;
+}
+
+.container {
+	padding-bottom: 5%;
+}
+
+.instrument-item-name {
+	color: #337ab7;
+}
+
+

@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "flashmessage.html" %}
+
+
+<div class="row">
+
+	<div class="col-md-4 col-sep">
+
+		<h2>Instrument Types</h2>
+
+		{% for instrumenttypes in instrumenttype %}
+
+		<h3>{{instrumenttypes.name_type}}</h3>
+
+		<div class="clearfix"></div>
+
+		<div class="btn-group-vertical" role="group" aria-label="...">
+			<a class="btn btn-default" href='{{url_for('instrumentList', instrument_type_id = instrumenttypes.id, instrument_type_name = instrumenttypes.name_type) }}'>View Instruments</a>
+		</div>
+
+		{% endfor %}
+
+		<div class="clearfix"></div>
+
+	</div>
+
+	<div class="col-md-8">
+		
+		<h2>{{ items.instrumenttype.name_type }}</h2>
+
+	{% if items != [] %}	
+				<h3>Instrument: <span class="instrument-item-name">{{items.name}}</span></h3>
+				<h3>Description:</h3>
+					<p>{{items.description}}</p>
+	{% endif %}
+		<div class="btn-group-vertical" role="group" aria-label="...">
+			<a class="btn btn-default" href='{{url_for('instrumentList', instrument_type_id = items.instrumenttype.id, instrument_type_name = items.instrumenttype.name_type) }}'>Go Back</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

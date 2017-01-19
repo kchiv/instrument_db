@@ -1,0 +1,49 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "flashmessage.html" %}
+
+<div class="row">
+
+	<div class="col-md-4 col-sep">
+
+		<h2>Instrument Types</h2>
+
+		{% for instrumenttypes in instrumenttype %}
+
+		<h3>{{instrumenttypes.name_type}}</h3>
+
+		<div class="clearfix"></div>
+
+		<div class="btn-group-vertical" role="group" aria-label="...">
+			<a class="btn btn-default" href='{{url_for('instrumentList', instrument_type_id = instrumenttypes.id, instrument_type_name = instrumenttypes.name_type) }}'>View Instruments</a>
+			<a class="btn btn-default" href='{{url_for('editInstrumentType', instrument_type_id = instrumenttypes.id, instrument_type_name = instrumenttypes.name_type) }}'>Edit Instruments</a>
+			<a class="btn btn-default" href='{{url_for('deleteInstrumentType', instrument_type_id = instrumenttypes.id) }}'>Delete Instruments</a>
+		</div>
+
+		{% endfor %}
+
+		<div class="clearfix"></div>
+
+		<br>
+
+		<a class="btn btn-primary" href='{{url_for('newInstrumentType')}}'>Create Instrument Type</a>
+
+		<br>
+
+	</div>
+
+	<div class="col-md-8">
+
+		<h2>Latest Instruments</h2>
+		<br>
+		{% for i in items %}
+			<h4><a href = "{{url_for('singleInstrument', instrument_type_id = i.instrumenttype.id, instrument_type_name = i.instrumenttype.name_type, instrument_id = i.id, instrument_name = i.name)}}">{{i.name}}</a> <span class="label label-default">{{i.instrumenttype.name_type}}</span></h4>
+		<br>
+		{% endfor %}
+		
+	</div>
+
+</div>
+
+{% endblock %}
