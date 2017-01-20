@@ -31,5 +31,11 @@ After you've started up the virtual machine and logged in, you will need to crea
 
 To create the database that has already been constructed, you must do the following:
 
-1. Run the command ```python project.py``` in the terminal
-2. To populate the database with the data I've provided, you can run the command ```python database_setup.py```
+1. Run the command ```python database_setup.py``` in the terminal
+2. To populate the database with the data I've provided, you can run the command ```python db_instrument_insert.py``` in the terminal
+
+# Running the Application
+
+After the database has been set up, we can run our application.
+
+To run the application we must simply run the command ```python project.py``` which will start our server and allow us to begin using our application on http://localhost:8000/
